@@ -1,0 +1,17 @@
+{% extends 'question/index.html '%}
+
+{% block body_block%}
+<div class="container">
+
+<form  method="post">{% csrf_token %}
+  <p align='center'>Title : {{form.name}} </p>
+<p align='center'>Description : {{form.description}}</p>
+<p align='center'> category : {{form.category}}</p>
+
+
+
+<input type="submit" name="" value="" action='.' align='center'name='submit'>
+</form>
+</div>
+
+{% endblock%}
