@@ -6,9 +6,10 @@ from django.db import models
 
 class Task():
     def get_absolute_url(self):
+        # hello
         return reverse('detail', kwargs={'slug': self.slug})
 
-    def __unicode(self):
+    def __str__(self):
         return self.title
 
 # Create your models here.
@@ -26,3 +27,4 @@ class Question(models.Model):
     objects=CatManager()
     def __str__(self):
         return self.name
+# class User(models.Model):

@@ -1,0 +1,43 @@
+<script language ="javascript" >
+var userpassword=new Array(4);
+userpassword[0]="Allwyn";
+userpassword[1]="allwn";
+userpassword[3]="Rohan";
+userpassword[4]="rohan";
+function checkOut(){
+  var flag=0;
+  var flag1=0;
+  var i=0;
+  var j=0;
+  for(x=0;x<document.survey.elements.length;x++)
+  {
+    if(document.survey.elements[x].value=="")
+    {
+      alert("You forgot one of the required fields please try again");
+      return;
+    }
+  }
+  var.user=document.survey.element[0].value;
+  if(var password =document.write.survey.elements[x].value==""){
+
+alert("you foregot one of the required fields,please try again ")
+return;
+
+
+  }
+}
+var user =documents.survey.elements[1].value;
+while(i<=3){
+
+if(userpassword[i]==user){
+  j=i;
+  j++;
+  if (userpassword[j]==password){
+
+    flag=1;
+    break;
+  }
+}
+
+}
+</script>

@@ -1,0 +1,12 @@
+{% extends 'question/index.html '%}
+
+{% block body_block %}
+<div class="conrainer">
+
+
+  <form method="POST">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Submit</button>
+  </form>
+</div>
+{% endblock %}

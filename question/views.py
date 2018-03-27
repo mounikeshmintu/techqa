@@ -4,7 +4,14 @@ from django.views.generic import DetailView
 from.models import Question
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
+from django.contrib.auth import authenticate, login
+from .forms import UserRegistrationForm
+from django.contrib.auth.models import User
+from django import forms
+
+
 # Create your views here.
+
 class Create(CreateView):
     model=Question
     fields=['name','description','category']
@@ -26,6 +33,51 @@ class Create(CreateView):
 #         context['cool']=Question.objects.all()
 #         return context
 def Home(request):
-    cool =Question.objects.all()
+    cool =Question.objects.order_by('name')
     return render (request,'question/index.html',{'cool':cool})
     return HttpResponseRedirect('/')
+# def signup(request):
+#     form=UserRegistrationForm()
+#     if request.method=='POST':
+#
+#         if form.is_valid():
+#             userobj=form.cleaned_data
+#             username=userobj['Username']
+#             email=userobj['Email']
+#             password=userobj['Password']
+#             if not User.objects.filter(username=username).exists():
+#                 User.objects.create_user(username,email,password)
+#                 user=authenticate(username=username,password=password)
+#                 login(request,user)
+#             else:
+#                 raise forms.ValidationError("looks like username already exist ")
+#         else:
+#             raise forms.ValidationError("looks like username already exist ")
+#
+#     else :
+#         form=UserRegistrationForm()
+#     return render(request, 'question/signup.html', {'form' : form})
+def signup(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            userObj = form.cleaned_data
+            username = userObj['username']
+            email =  userObj['email']
+            password =  userObj['password']
+            if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
+                User.objects.create_user(username, email, password)
+                user = authenticate(username = username, password = password)
+                login(request, user)
+                return HttpResponseRedirect('/')
+            else:
+                raise forms.ValidationError('Looks like a username with that email or password already exists')
+
+    else:
+        form = UserRegistrationForm()
+
+    return render(request, 'question/signup.html', {'form' : form})
+    def search(request,q):
+        if request.get == 'q':
+            results= Question.objects.fiter(q=q)
+            return results
