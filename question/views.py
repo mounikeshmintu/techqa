@@ -84,4 +84,4 @@ def Search(request):
     query=request.GET.get('q')
         
     results = Question.objects.filter(Q(name__icontains=query))
-    return render(request,'question/search.html',{'q':results})
+    return render(request,'question/search.html',{'q':results,'search':query})

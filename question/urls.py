@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^ques/',Create.as_view(success_url="/index/home/"),name='ques'),
     url(r'^signup/',signup,name='signup'),
     url(r'^logout/$', auth_views.logout,name='logout'),
-       url(r'^/',Search,name='search'),
+       url(r'^search/',Search,name='search'),
 
 
     # CreateView.as_view(model=myModel, success_url=reverse('success-url'))
