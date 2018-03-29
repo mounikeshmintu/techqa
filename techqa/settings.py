@@ -25,9 +25,9 @@ SECRET_KEY = 'p09#c#bdah%sl79la7x=z$t3k&0q862*s!v9&^f5639@cib-lq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ["qk0u8lv2.apps.lair.io"]
 
-
+ALLOWED_HOSTS=[]
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'question',
-    'bootstrapform',
+#     'bootstrapform',
 ]
 
 MIDDLEWARE = [

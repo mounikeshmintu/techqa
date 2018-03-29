@@ -1,13 +1,8 @@
 {% extends 'question/index.html '%}
 
-{% block body_block %}
-
-<div class="container"><p>you have searched for {{query}}</p>
+{% block body_block%}
+<div class="container"><p>you have searched for {{q}}</p>
   {% for l in res %}
-  {{l.name}}
+<h1> {{l.name}}</h1>
   {%endfor%}
-</div>
-
-
-
-{% endblock%}
+</div>{% endblock%}
