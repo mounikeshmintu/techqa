@@ -77,7 +77,10 @@ def signup(request):
         form = UserRegistrationForm()
 
     return render(request, 'question/signup.html', {'form' : form})
-    def search(request,q):
-        if request.get == 'q':
-            results= Question.objects.fiter(q=q)
-            return results
+def Search(request):
+
+    # if 'q' in request.get == 'q'and request.get['q']:
+        query=request.GET.get('q')
+
+        results= Question.objects.fiter(title__icontains=query)
+        return render(request,'question/search.html',{'res':results,'q':query})

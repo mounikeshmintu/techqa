@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from django.views.generic.base import TemplateView
-from .views import Create,Home,signup
+from .views import Create,Home,signup,Search
 from django.urls import reverse
 from .models import Question
 from django.contrib.auth import views as auth_views
@@ -27,7 +27,8 @@ urlpatterns = [
     url(r'^home/',Home,name='home'),
     url(r'^ques/',Create.as_view(success_url="/index/home/"),name='ques'),
     url(r'^signup/',signup,name='signup'),
-    url(r'^logout/$', auth_views.logout,name='logout')
+    url(r'^logout/$', auth_views.logout,name='logout'),
+    url(r'^search/',Search,name='search'),
 
     # CreateView.as_view(model=myModel, success_url=reverse('success-url'))
 

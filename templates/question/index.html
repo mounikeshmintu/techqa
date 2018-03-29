@@ -42,9 +42,15 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <!-- a href="{% url 'main:search' %}" -->
+    <!-- <form class="" action="." method="GET">
+      <input type="text" name="q" value="submit">
+      <button type="submit" name="button">search</button>
+    </form> -->
+
+    <form class="form-inline my-2 my-lg-0" method="GET"  action="{% url 'main:search' %}">  >
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"name='q'>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="{% url 'main:signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
