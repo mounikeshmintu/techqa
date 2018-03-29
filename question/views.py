@@ -8,7 +8,9 @@ from django.contrib.auth import authenticate, login
 from .forms import UserRegistrationForm
 from django.contrib.auth.models import User
 from django import forms
+from django.db.models import Q
 
+from django.db.models import Q
 
 # Create your views here.
 
@@ -77,7 +79,9 @@ def signup(request):
         form = UserRegistrationForm()
 
     return render(request, 'question/signup.html', {'form' : form})
-    def search(request,q):
-        if request.get == 'q':
-            results= Question.objects.fiter(q=q)
-            return results
+def Search(request):
+    
+    query=request.GET.get('q')
+        
+    results = Question.objects.filter(Q(name__icontains=query))
+    return render(request,'question/search.html',{'q':results})

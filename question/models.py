@@ -23,7 +23,7 @@ class Category(models.Model):
 class Question(models.Model):
     name=models.CharField(max_length=50)
     description=models.TextField()
-    category=models.ForeignKey(Category)
+    category=models.ForeignKey(Category,on_delete=models.CASCADE)
     objects=CatManager()
     def __str__(self):
         return self.name
